@@ -31,10 +31,10 @@ public class OrderController
     @Resource
     private RestTemplate restTemplate;
 
-    @Resource
-    private LoadBalancer loadBalancer;
-    @Resource
-    private DiscoveryClient discoveryClient;
+//    @Resource
+//    private LoadBalancer loadBalancer;
+//    @Resource
+//    private DiscoveryClient discoveryClient;
 
     @GetMapping("/consumer/payment/create")
     public CommonResult<Payment> create(Payment payment)
@@ -60,28 +60,28 @@ public class OrderController
         }
     }
 
-    @GetMapping(value = "/consumer/payment/lb")
-    public String getPaymentLB()
-    {
-        List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
-
-        if(instances == null || instances.size() <= 0)
-        {
-            return null;
-        }
-
-        ServiceInstance serviceInstance = loadBalancer.instances(instances);
-        URI uri = serviceInstance.getUri();
-
-        return restTemplate.getForObject(uri+"/payment/lb",String.class);
-
-    }
-
-    // ====================> zipkin+sleuth
-    @GetMapping("/consumer/payment/zipkin")
-    public String paymentZipkin()
-    {
-        String result = restTemplate.getForObject("http://localhost:8001"+"/payment/zipkin/", String.class);
-        return result;
-    }
+//    @GetMapping(value = "/consumer/payment/lb")
+//    public String getPaymentLB()
+//    {
+//        List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
+//
+//        if(instances == null || instances.size() <= 0)
+//        {
+//            return null;
+//        }
+//
+//        ServiceInstance serviceInstance = loadBalancer.instances(instances);
+//        URI uri = serviceInstance.getUri();
+//
+//        return restTemplate.getForObject(uri+"/payment/lb",String.class);
+//
+//    }
+//
+//    // ====================> zipkin+sleuth
+//    @GetMapping("/consumer/payment/zipkin")
+//    public String paymentZipkin()
+//    {
+//        String result = restTemplate.getForObject("http://localhost:8001"+"/payment/zipkin/", String.class);
+//        return result;
+//    }
 }
