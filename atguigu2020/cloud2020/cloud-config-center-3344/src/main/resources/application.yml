@@ -8,12 +8,12 @@ spring:
     config:
       server:
         git:
-          uri: git@github.com:zzyybs/springcloud-config.git #GitHub上面的git仓库名字
+          uri: git@github.com:dominic-z/hello-spring-cloud.git #GitHub上面的git仓库名字
         ####搜索目录
           search-paths:
-            - springcloud-config
+            - atguigu2020/spring-cloud-config
       ####读取分支
-      label: master
+      label: learn/20220130-sgg-spring-cloud
 #rabbitmq相关配置
 rabbitmq:
     host: localhost
