@@ -17,7 +17,7 @@ import java.util.Date;
  */
 @Component
 @Slf4j
-public class MyLogGateWayFilter implements GlobalFilter,Ordered
+public class MyGlobalFilter implements GlobalFilter,Ordered
 {
 
     @Override
