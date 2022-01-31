@@ -19,7 +19,7 @@ spring:
             dataId: cloudalibaba-sentinel-service
             groupId: DEFAULT_GROUP
             data-type: json
-            rule-type: flow
+            rule-type: flow # 类型是流控规则
 
 management:
   endpoints:
