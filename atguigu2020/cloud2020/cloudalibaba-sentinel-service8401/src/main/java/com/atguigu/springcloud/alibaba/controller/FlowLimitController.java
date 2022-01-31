@@ -20,6 +20,11 @@ public class FlowLimitController
     @GetMapping("/testA")
     public String testA()
     {
+//        try {
+//            Thread.sleep(10000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         return "------testA";
     }
 
