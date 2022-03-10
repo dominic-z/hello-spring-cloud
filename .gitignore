@@ -38,3 +38,4 @@ build/
 ### mac
 **/.DS_Store
 
+/**/gitignore

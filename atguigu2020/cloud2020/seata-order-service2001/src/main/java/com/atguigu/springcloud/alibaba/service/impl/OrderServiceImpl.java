@@ -31,6 +31,7 @@ public class OrderServiceImpl implements OrderService
      * 简单说：下订单->扣库存->减余额->改状态
      */
     @Override
+    // 可以通过注释掉这个来看实验效果
     @GlobalTransactional(name = "fsp-create-order",rollbackFor = Exception.class)
     public void create(Order order)
     {
@@ -43,7 +44,7 @@ public class OrderServiceImpl implements OrderService
         storageService.decrease(order.getProductId(),order.getCount());
         log.info("----->订单微服务开始调用库存，做扣减end");
 
-        //3 扣减账户
+        //3 扣减账户 该接口会超时1s，feign默认超时时间为1s，因此会报错
         log.info("----->订单微服务开始调用账户，做扣减Money");
         accountService.decrease(order.getUserId(),order.getMoney());
         log.info("----->订单微服务开始调用账户，做扣减end");
